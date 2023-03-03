@@ -1,0 +1,104 @@
+2023-02-28 15:35:48.142 -06:00 [DBG] Parsing command
+2023-02-28 15:35:48.722 -06:00 [DBG] Parsing finished successfully. Elapsed 0 seconds.
+2023-02-28 15:35:48.723 -06:00 [DBG] Checking if CLI upgrade required
+2023-02-28 15:35:48.858 -06:00 [DBG] CLI is up-to-date. Elapsed 0 seconds.
+2023-02-28 15:35:51.178 -06:00 [INF] Start:  copyToRepo --name ReadKnobs --version 1.0.7 --source C:\temp\Packman\readknobs --installer install.bat
+2023-02-28 15:35:53.200 -06:00 [INF] Machine name : CABIDO-MOBL1
+2023-02-28 15:36:09.477 -06:00 [INF] Command Completed Successfully, Elapsed Time:  00:00:16
+2023-02-28 15:38:20.154 -06:00 [DBG] Parsing command
+2023-02-28 15:38:20.822 -06:00 [DBG] Parsing finished successfully. Elapsed 0 seconds.
+2023-02-28 15:38:20.823 -06:00 [DBG] Checking if CLI upgrade required
+2023-02-28 15:38:20.905 -06:00 [DBG] CLI is up-to-date. Elapsed 0 seconds.
+2023-02-28 15:38:23.669 -06:00 [INF] Start:  install --name ReadKnobs --force
+2023-02-28 15:38:25.035 -06:00 [INF] Machine name : CABIDO-MOBL1
+2023-02-28 15:38:26.377 -06:00 [INF] Log file was created at: c:\intel\packman\installation_logs\ReadKnobs_bbbe4ab3-ef98-41f9-bd28-4ae402871f7f.log
+2023-02-28 15:38:26.378 -06:00 [INF] Packman Version: 3.7.1.0
+2023-02-28 15:38:26.378 -06:00 [INF] User: carlos.abido@intel.com
+2023-02-28 15:38:26.379 -06:00 [INF] Env:prod
+2023-02-28 15:38:26.379 -06:00 [INF] Deployment Id: bbbe4ab3-ef98-41f9-bd28-4ae402871f7f
+2023-02-28 15:38:32.651 -06:00 [INF] C:\ProgramData\chocolatey\choco.exe upgrade ReadKnobs --version 1.0.7 --source \\amr.corp.intel.com\ec\proj\ha\sa\sa_laboratory\SA_FM_SYNC\TMT_SW\Bronze\chocoPackages\ReadKnobs\ -u PAT -p ************* -y --timeout 2700 --force --skippowershell --params "'/install-id:bbbe4ab3-ef98-41f9-bd28-4ae402871f7f '"
+2023-02-28 15:38:33.382 -06:00 [INF] Chocolatey v1.2.1
+2023-02-28 15:38:33.524 -06:00 [INF] Upgrading the following packages:
+2023-02-28 15:38:33.526 -06:00 [INF] ReadKnobs
+2023-02-28 15:38:33.528 -06:00 [INF] By upgrading, you accept licenses for the packages.
+2023-02-28 15:38:33.589 -06:00 [INF] ReadKnobs is not installed. Installing...
+2023-02-28 15:38:34.044 -06:00 [INF] 
+2023-02-28 15:38:34.044 -06:00 [INF] ReadKnobs v1.0.7 (forced)
+2023-02-28 15:38:34.066 -06:00 [INF] readknobs package files upgrade completed. Performing other installation steps.
+2023-02-28 15:38:34.169 -06:00 [INF]  The upgrade of readknobs was successful.
+2023-02-28 15:38:34.170 -06:00 [INF]   Software installed to 'C:\ProgramData\chocolatey\lib\ReadKnobs'
+2023-02-28 15:38:34.179 -06:00 [INF] 
+2023-02-28 15:38:34.180 -06:00 [INF] Chocolatey upgraded 1/1 packages. 
+2023-02-28 15:38:34.180 -06:00 [INF]  See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+2023-02-28 15:38:34.489 -06:00 [INF] 
+2023-02-28 15:38:34.491 -06:00 [INF] --------------- chocolateyinstall.ps1 started: ReadKnobs.1.0.7 ---------------
+2023-02-28 15:38:34.497 -06:00 [INF] RunProcess starting: \\amr.corp.intel.com\ec\proj\ha\sa\sa_laboratory\SA_FM_SYNC\TMT_SW\Bronze\ReadKnobs\1.0.7\install.bat 
+2023-02-28 15:38:34.641 -06:00 [INF] 
+2023-02-28 15:38:34.642 -06:00 [INF] c:\temp\Packman\readknobs>echo off  
+2023-02-28 15:38:34.642 -06:00 [INF] --- Creating ReadKnobs folder on Desktop ---
+2023-02-28 15:38:34.644 -06:00 [INF] --- Coping readknobs.py ---
+2023-02-28 15:38:34.782 -06:00 [INF] 3 File(s) copied
+2023-02-28 15:38:34.790 -06:00 [INF] --- Installation completed. ---
+2023-02-28 15:38:34.797 -06:00 [INF] RunProcess completed: \\amr.corp.intel.com\ec\proj\ha\sa\sa_laboratory\SA_FM_SYNC\TMT_SW\Bronze\ReadKnobs\1.0.7\install.bat , exit code: 0
+2023-02-28 15:38:34.798 -06:00 [INF] --------------- chocolateyinstall.ps1 completed: ReadKnobs.1.0.7, exitCode: 0 ---------------
+2023-02-28 15:38:34.798 -06:00 [INF] 
+2023-02-28 15:38:34.995 -06:00 [INF] Command Completed Successfully, Elapsed Time:  00:00:10
+2023-02-28 15:44:26.622 -06:00 [DBG] Parsing command
+2023-02-28 15:44:27.316 -06:00 [DBG] Parsing finished successfully. Elapsed 0 seconds.
+2023-02-28 15:44:27.317 -06:00 [DBG] Checking if CLI upgrade required
+2023-02-28 15:44:27.398 -06:00 [DBG] CLI is up-to-date. Elapsed 0 seconds.
+2023-02-28 15:44:29.959 -06:00 [INF] Start:  copyToRepo --name Hardward_Check --version 1.0.6 --source C:\temp\Packman\hardwarecheck --installer install.bat
+2023-02-28 15:44:32.285 -06:00 [INF] Machine name : CABIDO-MOBL1
+2023-02-28 15:44:37.124 -06:00 [INF] packman failed to copyToRepo, reason: Package MetaData is missing
+2023-02-28 15:44:37.125 -06:00 [INF] As a package owner, Please goto\packman, enter the new "Explore Packages" section and ADD the new package details using "Add Package Metadata" button.
+2023-02-28 15:44:37.126 -06:00 [INF] 
+2023-02-28 15:44:37.126 -06:00 [INF]  Elapsed Time:  00:00:02
+2023-02-28 15:44:37.127 -06:00 [INF] 	Package MetaData is missing
+2023-02-28 15:44:37.127 -06:00 [INF] As a package owner, Please goto\packman, enter the new "Explore Packages" section and ADD the new package details using "Add Package Metadata" button.
+2023-02-28 15:44:37.127 -06:00 [INF] 
+2023-02-28 15:44:37.127 -06:00 [INF] 	
+2023-02-28 15:45:05.930 -06:00 [DBG] Parsing command
+2023-02-28 15:45:06.537 -06:00 [DBG] Parsing finished successfully. Elapsed 0 seconds.
+2023-02-28 15:45:06.538 -06:00 [DBG] Checking if CLI upgrade required
+2023-02-28 15:45:06.614 -06:00 [DBG] CLI is up-to-date. Elapsed 0 seconds.
+2023-02-28 15:45:09.266 -06:00 [INF] Start:  copyToRepo --name Hardware_Check --version 1.0.6 --source C:\temp\Packman\hardwarecheck --installer install.bat
+2023-02-28 15:45:10.666 -06:00 [INF] Machine name : CABIDO-MOBL1
+2023-02-28 15:45:22.115 -06:00 [INF] Command Completed Successfully, Elapsed Time:  00:00:12
+2023-02-28 15:47:22.387 -06:00 [DBG] Parsing command
+2023-02-28 15:47:22.987 -06:00 [DBG] Parsing finished successfully. Elapsed 0 seconds.
+2023-02-28 15:47:22.988 -06:00 [DBG] Checking if CLI upgrade required
+2023-02-28 15:47:23.073 -06:00 [DBG] CLI is up-to-date. Elapsed 0 seconds.
+2023-02-28 15:47:25.749 -06:00 [INF] Start:  install --name Hardware_check --force
+2023-02-28 15:47:27.088 -06:00 [INF] Machine name : CABIDO-MOBL1
+2023-02-28 15:47:28.606 -06:00 [INF] Log file was created at: c:\intel\packman\installation_logs\Hardware_check_83564312-8a83-41d1-a0bc-d28b44d09aae.log
+2023-02-28 15:47:28.607 -06:00 [INF] Packman Version: 3.7.1.0
+2023-02-28 15:47:28.608 -06:00 [INF] User: carlos.abido@intel.com
+2023-02-28 15:47:28.608 -06:00 [INF] Env:prod
+2023-02-28 15:47:28.609 -06:00 [INF] Deployment Id: 83564312-8a83-41d1-a0bc-d28b44d09aae
+2023-02-28 15:47:35.425 -06:00 [INF] C:\ProgramData\chocolatey\choco.exe upgrade Hardware_Check --version 1.0.6 --source \\amr.corp.intel.com\ec\proj\ha\sa\sa_laboratory\SA_FM_SYNC\TMT_SW\Bronze\chocoPackages\Hardware_Check\ -u PAT -p ************* -y --timeout 2700 --force --skippowershell --params "'/install-id:83564312-8a83-41d1-a0bc-d28b44d09aae '"
+2023-02-28 15:47:36.182 -06:00 [INF] Chocolatey v1.2.1
+2023-02-28 15:47:36.321 -06:00 [INF] Upgrading the following packages:
+2023-02-28 15:47:36.322 -06:00 [INF] Hardware_Check
+2023-02-28 15:47:36.323 -06:00 [INF] By upgrading, you accept licenses for the packages.
+2023-02-28 15:47:36.380 -06:00 [INF] Hardware_Check is not installed. Installing...
+2023-02-28 15:47:36.837 -06:00 [INF] 
+2023-02-28 15:47:36.838 -06:00 [INF] Hardware_Check v1.0.6 (forced)
+2023-02-28 15:47:36.847 -06:00 [INF] hardware_check package files upgrade completed. Performing other installation steps.
+2023-02-28 15:47:36.949 -06:00 [INF]  The upgrade of hardware_check was successful.
+2023-02-28 15:47:36.951 -06:00 [INF]   Software installed to 'C:\ProgramData\chocolatey\lib\Hardware_Check'
+2023-02-28 15:47:36.959 -06:00 [INF] 
+2023-02-28 15:47:36.959 -06:00 [INF] Chocolatey upgraded 1/1 packages. 
+2023-02-28 15:47:36.959 -06:00 [INF]  See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+2023-02-28 15:47:37.282 -06:00 [INF] 
+2023-02-28 15:47:37.284 -06:00 [INF] --------------- chocolateyinstall.ps1 started: Hardware_Check.1.0.6 ---------------
+2023-02-28 15:47:37.290 -06:00 [INF] RunProcess starting: \\amr.corp.intel.com\ec\proj\ha\sa\sa_laboratory\SA_FM_SYNC\TMT_SW\Bronze\Hardware_Check\1.0.6\install.bat 
+2023-02-28 15:47:37.409 -06:00 [INF] 
+2023-02-28 15:47:37.409 -06:00 [INF] c:\temp\Packman\readknobs>echo off  
+2023-02-28 15:47:37.410 -06:00 [INF] --- Creating HardwareCheck folder ---
+2023-02-28 15:47:37.411 -06:00 [INF] --- Coping files ---
+2023-02-28 15:47:37.590 -06:00 [INF] 4 File(s) copied
+2023-02-28 15:47:37.598 -06:00 [INF] --- Installation completed. ---
+2023-02-28 15:47:37.602 -06:00 [INF] RunProcess completed: \\amr.corp.intel.com\ec\proj\ha\sa\sa_laboratory\SA_FM_SYNC\TMT_SW\Bronze\Hardware_Check\1.0.6\install.bat , exit code: 0
+2023-02-28 15:47:37.603 -06:00 [INF] --------------- chocolateyinstall.ps1 completed: Hardware_Check.1.0.6, exitCode: 0 ---------------
+2023-02-28 15:47:37.603 -06:00 [INF] 
+2023-02-28 15:47:37.819 -06:00 [INF] Command Completed Successfully, Elapsed Time:  00:00:11

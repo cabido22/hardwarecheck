@@ -1,0 +1,46 @@
+{
+    "SiliconFamily": "CLX",
+    "Units": [
+        {
+            "Socket": 0, 
+            "Straps": [
+                "Strap_BIST_ENABLE: ON",
+                "Strap_SAFE_MODE_BOOT: ON",
+                "Strap_TXT_PLT_EN: ON",
+                "Strap_TXT_AGENT: ON"
+            ]
+        }, 
+        {
+            "Socket": 1, 
+            "Straps": [
+                "Strap_BIST_ENABLE: ON",
+                "Strap_SAFE_MODE_BOOT: ON",
+                "Strap_TXT_PLT_EN: ON",
+                "Strap_TXT_AGENT: ON"
+            ]
+
+        }
+    ], 
+    "Memory": [
+        {
+            "Socket": 0, 
+            "Channel": 0, 
+            "DRAM_Max_Frequency": "2933MHz"
+        }, 
+        {
+            "Socket": 0, 
+            "Channel": 3, 
+            "DRAM_Max_Frequency": "2933MHz"
+        }, 
+        {
+            "Socket": 1, 
+            "Channel": 0, 
+            "DRAM_Max_Frequency": "2933MHz" 
+        }, 
+        {
+            "Socket": 1, 
+            "Channel": 3, 
+            "DRAM_Max_Frequency": "2933MHz" 
+        }
+    ]
+}
