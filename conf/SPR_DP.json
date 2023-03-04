@@ -1,0 +1,65 @@
+{
+    "SiliconFamily": "SPR",
+    "Units": [
+        {
+            "Socket": 0,
+            "Straps": [
+                "Strap_BIST_ENABLE: ON",
+                "Strap_SAFE_MODE_BOOT: OFF",
+                "Strap_TXT_PLT_EN: OFF",
+                "Strap_TXT_AGENT: ON"
+            ]
+        },
+        {
+            "Socket": 1,
+            "Straps": [
+                "Strap_BIST_ENABLE: ON",
+                "Strap_SAFE_MODE_BOOT: OFF",
+                "Strap_TXT_PLT_EN: OFF",
+                "Strap_TXT_AGENT: OFF"
+            ]
+        }
+    ],
+    "Memory": [
+        {
+            "Socket": 0,
+            "Memory_Controller": 0,
+            "DRAM_Max_Frequency": "4800MHz"
+        },
+        {
+            "Socket": 0,
+            "Memory_Controller": 1,
+            "DRAM_Max_Frequency": "4800MHz"
+        },
+        {
+            "Socket": 0,
+            "Memory_Controller": 2,
+            "DRAM_Max_Frequency": "4800MHz"
+        },
+        {
+            "Socket": 0,
+            "Memory_Controller": 3,
+            "DRAM_Max_Frequency": "4800MHz"
+        },
+        {
+            "Socket": 1,
+            "Memory_Controller": 0,
+            "DRAM_Max_Frequency": "4800MHz"
+        },
+        {
+            "Socket": 1,
+            "Memory_Controller": 1,
+            "DRAM_Max_Frequency": "4800MHz"
+        },
+        {
+            "Socket": 1,
+            "Memory_Controller": 2,
+            "DRAM_Max_Frequency": "4800MHz"
+        },
+        {
+            "Socket": 1,
+            "Memory_Controller": 3,
+            "DRAM_Max_Frequency": "4800MHz"
+        }
+    ],
+}
