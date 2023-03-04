@@ -1,0 +1,196 @@
+---
+# BoardInfo
+SiliconFamily: SPR
+# NumOfCores: 16
+# NumOfThreads: 32
+Units:
+- #UnitSerial: D21N7U3500063
+  # Product: SAPPHIRE RAPIDS-SP-XCC
+  # DataSource: CATTS
+  Socket: 0
+  # NumOfCores: 8
+  # NumOfThreads: 16
+  # UnitUlt: D2043930 602 -5 -2
+  # QDF: Q1ZH
+  # UnitStep: E5
+  # FuseRevision: ''
+  # NPKAddress: '0x71c00009'
+  # CpuID: '0x806f8'
+  # AtomStepping: ''
+  Straps:
+  - 'Strap_BIST_ENABLE: ON'
+  - 'Strap_SAFE_MODE_BOOT: OFF'
+  - 'Strap_TXT_PLT_EN: OFF'
+  - 'Strap_TXT_AGENT: ON'
+- #UnitSerial: D21N7U3500147
+  # Product: SAPPHIRE RAPIDS-SP-XCC
+  # DataSource: CATTS
+  Socket: 1
+  # NumOfCores: 8
+  # NumOfThreads: 16
+  # UnitUlt: D2043930 560 -4 -6
+  # QDF: Q1ZH
+  # UnitStep: E5
+  # FuseRevision: ''
+  # NPKAddress: '0x71a00009'
+  # CpuID: '0x806f8'
+  # AtomStepping: ''
+  Straps:
+  - 'Strap_BIST_ENABLE: ON'
+  - 'Strap_SAFE_MODE_BOOT: OFF'
+  - 'Strap_TXT_PLT_EN: OFF'
+  - 'Strap_TXT_AGENT: OFF'
+# PchUnits:
+# - UnitUlt: L1018820 060 17 5
+#   UnitStep: B0
+#   QDF: QXRJ
+#   UnitSerial: 71A52U3306508
+#   Product: EMMITSBURG
+#   DataSource: UDM
+Memory:
+- Socket: 0
+  Memory_Controller: 0
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: SK Hynix
+  # DIMM_Register_Vendor: Montage
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: SK Hynix
+  # DRAM_Stepping: '8.8'
+  # DRAM_Type: DDR5 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMCA2GR8MJR8C-EBGA
+  # DIMM_Serial_Number: '0x11502105'
+  # DRAM_Manufacturing_Date: ww3 2020
+  DRAM_Max_Frequency: 4800MHz
+  # DRAM_Density: 16Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 1
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: SK Hynix
+  # DIMM_Register_Vendor: Montage
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: SK Hynix
+  # DRAM_Stepping: '8.8'
+  # DRAM_Type: DDR5 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMCA2GR8MJR8C-EBGA
+  # DIMM_Serial_Number: '0x11502104'
+  # DRAM_Manufacturing_Date: ww3 2020
+  DRAM_Max_Frequency: 4800MHz
+  # DRAM_Density: 16Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 2
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: SK Hynix
+  # DIMM_Register_Vendor: Rambus
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: SK Hynix
+  # DRAM_Stepping: '8.8'
+  # DRAM_Type: DDR5 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMCA2GR8MJR8C-EBMA
+  # DIMM_Serial_Number: '0x12D05198'
+  # DRAM_Manufacturing_Date: ww8 2020
+  DRAM_Max_Frequency: 4800MHz
+  # DRAM_Density: 16Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 3
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: SK Hynix
+  # DIMM_Register_Vendor: Rambus
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: SK Hynix
+  # DRAM_Stepping: '8.8'
+  # DRAM_Type: DDR5 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMCA2GR8MJR8C-EBMA
+  # DIMM_Serial_Number: '0x12D05243'
+  # DRAM_Manufacturing_Date: ww8 2020
+  DRAM_Max_Frequency: 4800MHz
+  # DRAM_Density: 16Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  Memory_Controller: 0
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: SK Hynix
+  # DIMM_Register_Vendor: Rambus
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: SK Hynix
+  # DRAM_Stepping: '8.8'
+  # DRAM_Type: DDR5 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMCA2GR8MJR8C-EBMA
+  # DIMM_Serial_Number: '0x12D05256'
+  # DRAM_Manufacturing_Date: ww8 2020
+  DRAM_Max_Frequency: 4800MHz
+  # DRAM_Density: 16Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  Memory_Controller: 1
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: SK Hynix
+  # DIMM_Register_Vendor: Rambus
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: SK Hynix
+  # DRAM_Stepping: '8.8'
+  # DRAM_Type: DDR5 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMCA2GR8MJR8C-EBMA
+  # DIMM_Serial_Number: '0x12D0503B'
+  # DRAM_Manufacturing_Date: ww8 2020
+  DRAM_Max_Frequency: 4800MHz
+  # DRAM_Density: 16Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  Memory_Controller: 2
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: SK Hynix
+  # DIMM_Register_Vendor: Rambus
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: SK Hynix
+  # DRAM_Stepping: '8.8'
+  # DRAM_Type: DDR5 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMCA2GR8MJR8C-EBMA
+  # DIMM_Serial_Number: '0x12D05008'
+  # DRAM_Manufacturing_Date: ww8 2020
+  DRAM_Max_Frequency: 4800MHz
+  # DRAM_Density: 16Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  Memory_Controller: 3
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: SK Hynix
+  # DIMM_Register_Vendor: Rambus
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: SK Hynix
+  # DRAM_Stepping: '8.8'
+  # DRAM_Type: DDR5 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMCA2GR8MJR8C-EBMA
+  # DIMM_Serial_Number: '0x12D05039'
+  # DRAM_Manufacturing_Date: ww8 2020
+  DRAM_Max_Frequency: 4800MHz
+  # DRAM_Density: 16Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+# PCIe: []
+# zephyr_id: ''
+# bios_version: EGSDINT1.86B.0092.D23.2211061426
+# BoardType: ARCHER CITY
+# BoardSerial: QSA100100257
+# MicroCodePatch: '0xAB066361'
+# IoCards: 0
+# Kfir: KTC2
+# Probe: XDP
+# PlatformId: '0x80'
