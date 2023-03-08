@@ -1,0 +1,332 @@
+---
+# Source: BoardInfo
+SiliconFamily: ICX
+# NumOfCores: 8
+# NumOfThreads: 8
+Units:
+- #UnitSerial: D0P89J3000059
+  # Product: ICE LAKE SP XCC
+  # DataSource: UDM
+  Socket: 0
+  # NumOfCores: 4
+  # NumOfThreads: 4
+  # UnitUlt: D037333A 085 -2 -1
+  # QDF: ''
+  # UnitStep: D2
+  # FuseRevision: ''
+  # NPKAddress: '0x6c200009'
+  # CpuID: '0x606a6'
+  # AtomStepping: ''
+  Straps:
+  - 'Strap_BIST_ENABLE: ON'
+  - 'Strap_SAFE_MODE_BOOT: ON'
+  - 'Strap_TXT_PLT_EN: ON'
+  - 'Strap_TXT_AGENT: ON'
+- # UnitSerial: D0P89J3000286
+  # Product: ICE LAKE SP XCC
+  # DataSource: UDM
+  Socket: 1
+  # NumOfCores: 4
+  # NumOfThreads: 4
+  # UnitUlt: D037333A 167 1 -2
+  # QDF: ''
+  # UnitStep: D2
+  # FuseRevision: ''
+  # NPKAddress: '0x6c000009'
+  # CpuID: '0x606a6'
+  # AtomStepping: ''
+  Straps:
+  - 'Strap_BIST_ENABLE: ON'
+  - 'Strap_SAFE_MODE_BOOT: ON'
+  - 'Strap_TXT_PLT_EN: ON'
+  - 'Strap_TXT_AGENT: OFF'
+# PchUnits:
+# - UnitUlt: ''
+  # UnitSerial: ''
+  # DataSource: ''
+  # Product: ''
+  # UnitStep: ''
+  # QDF: ''
+Memory:
+- Socket: 0
+  Memory_Controller: 0
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x72AEF2E0'
+  # DRAM_Manufacturing_Date: ww9 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 0
+  Channel: 1
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x72AEF2DF'
+  # DRAM_Manufacturing_Date: ww9 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 1
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x72AEF2E2'
+  # DRAM_Manufacturing_Date: ww9 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 1
+  Channel: 1
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x72AEF327'
+  # DRAM_Manufacturing_Date: ww9 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 2
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x72AEF2F5'
+  # DRAM_Manufacturing_Date: ww9 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 2
+  Channel: 1
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x72AEF2E4'
+  # DRAM_Manufacturing_Date: ww9 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 3
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x72AEF2CC'
+  # DRAM_Manufacturing_Date: ww9 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 3
+  Channel: 1
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x72AEF2F9'
+  # DRAM_Manufacturing_Date: ww9 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  Memory_Controller: 0
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x33A74103'
+  # DRAM_Manufacturing_Date: ww14 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  Memory_Controller: 0
+  Channel: 1
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: Montage
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x33A743FB'
+  # DRAM_Manufacturing_Date: ww14 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  Memory_Controller: 1
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x33A74199'
+  # DRAM_Manufacturing_Date: ww14 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  Memory_Controller: 1
+  Channel: 1
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x72AEF2DB'
+  # DRAM_Manufacturing_Date: ww9 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  Memory_Controller: 2
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x33A7414D'
+  # DRAM_Manufacturing_Date: ww14 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  Memory_Controller: 2
+  Channel: 1
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: Montage
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x33A7439E'
+  # DRAM_Manufacturing_Date: ww14 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  Memory_Controller: 3
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x33A74158'
+  # DRAM_Manufacturing_Date: ww14 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  Memory_Controller: 3
+  Channel: 1
+  Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: Montage
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x52EAC780'
+  # DRAM_Manufacturing_Date: ww8 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+# PCIe: []
+# zephyr_id: ''
+# bios_version: WLYDINT1.E9I.0030.P19.2302281944
+# BoardType: Wilson city RP
+# BoardSerial: BQWN93800684
+# MicroCodePatch: '0xFD673390'
+# IoCards: 0
+# Kfir: KTC2
+# Probe: XDP
+# PlatformId: '0x1'

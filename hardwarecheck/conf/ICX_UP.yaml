@@ -1,0 +1,178 @@
+---
+Source: BoardInfo
+SiliconFamily: ICX
+NumOfCores: 16
+NumOfThreads: 32
+Units:
+- UnitSerial: D00J8B7600081
+  Product: ICE LAKE SP XCC
+  DataSource: UDM
+  Socket: 0
+  NumOfCores: 16
+  NumOfThreads: 32
+  UnitUlt: D0292490 085 1 3
+  QDF: ''
+  UnitStep: D2
+  FuseRevision: ''
+  NPKAddress: '0x6c200009'
+  CpuID: '0x606a6'
+  AtomStepping: ''
+  Straps:
+  - 'Strap_BIST_ENABLE: ON'
+  - 'Strap_SAFE_MODE_BOOT: ON'
+  - 'Strap_TXT_PLT_EN: ON'
+  - 'Strap_TXT_AGENT: ON'
+PchUnits:
+- UnitUlt: ''
+  UnitSerial: ''
+  DataSource: ''
+  Product: ''
+  UnitStep: ''
+  QDF: ''
+Memory:
+- Socket: 0
+  Memory_Controller: 0
+  Channel: 0
+  Slot: 0
+  DIMM_Vendor: Hynix
+  DIMM_Register_Vendor: Montage
+  DIMM_Type: RDIMM
+  DRAM_Vendor: Hynix
+  DRAM_Stepping: F.F
+  DRAM_Type: DDR4 SDRAM
+  DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  DIMM_Serial_Number: '0x52EAC6FB'
+  DRAM_Manufacturing_Date: ww8 2019
+  DRAM_Max_Frequency: 2933MHz
+  DRAM_Density: 8Gb
+  Device_Width: x8
+  Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 0
+  Channel: 1
+  Slot: 0
+  DIMM_Vendor: Hynix
+  DIMM_Register_Vendor: Montage
+  DIMM_Type: RDIMM
+  DRAM_Vendor: Hynix
+  DRAM_Stepping: F.F
+  DRAM_Type: DDR4 SDRAM
+  DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  DIMM_Serial_Number: '0x52EAC7B3'
+  DRAM_Manufacturing_Date: ww8 2019
+  DRAM_Max_Frequency: 2933MHz
+  DRAM_Density: 8Gb
+  Device_Width: x8
+  Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 1
+  Channel: 0
+  Slot: 0
+  DIMM_Vendor: Hynix
+  DIMM_Register_Vendor: Montage
+  DIMM_Type: RDIMM
+  DRAM_Vendor: Hynix
+  DRAM_Stepping: F.F
+  DRAM_Type: DDR4 SDRAM
+  DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  DIMM_Serial_Number: '0x52EAC764'
+  DRAM_Manufacturing_Date: ww8 2019
+  DRAM_Max_Frequency: 2933MHz
+  DRAM_Density: 8Gb
+  Device_Width: x8
+  Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 1
+  Channel: 1
+  Slot: 0
+  DIMM_Vendor: Hynix
+  DIMM_Register_Vendor: Montage
+  DIMM_Type: RDIMM
+  DRAM_Vendor: Hynix
+  DRAM_Stepping: F.F
+  DRAM_Type: DDR4 SDRAM
+  DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  DIMM_Serial_Number: '0x52EAC68B'
+  DRAM_Manufacturing_Date: ww8 2019
+  DRAM_Max_Frequency: 2933MHz
+  DRAM_Density: 8Gb
+  Device_Width: x8
+  Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 2
+  Channel: 0
+  Slot: 0
+  DIMM_Vendor: Hynix
+  DIMM_Register_Vendor: Montage
+  DIMM_Type: RDIMM
+  DRAM_Vendor: Hynix
+  DRAM_Stepping: F.F
+  DRAM_Type: DDR4 SDRAM
+  DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  DIMM_Serial_Number: '0x52EAC7C0'
+  DRAM_Manufacturing_Date: ww8 2019
+  DRAM_Max_Frequency: 2933MHz
+  DRAM_Density: 8Gb
+  Device_Width: x8
+  Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 2
+  Channel: 1
+  Slot: 0
+  DIMM_Vendor: Hynix
+  DIMM_Register_Vendor: Montage
+  DIMM_Type: RDIMM
+  DRAM_Vendor: Hynix
+  DRAM_Stepping: F.F
+  DRAM_Type: DDR4 SDRAM
+  DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  DIMM_Serial_Number: '0x52EAC77F'
+  DRAM_Manufacturing_Date: ww8 2019
+  DRAM_Max_Frequency: 2933MHz
+  DRAM_Density: 8Gb
+  Device_Width: x8
+  Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 3
+  Channel: 0
+  Slot: 0
+  DIMM_Vendor: Hynix
+  DIMM_Register_Vendor: Montage
+  DIMM_Type: RDIMM
+  DRAM_Vendor: Hynix
+  DRAM_Stepping: F.F
+  DRAM_Type: DDR4 SDRAM
+  DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  DIMM_Serial_Number: '0x52EAC6CC'
+  DRAM_Manufacturing_Date: ww8 2019
+  DRAM_Max_Frequency: 2933MHz
+  DRAM_Density: 8Gb
+  Device_Width: x8
+  Device_Ranks: '1'
+- Socket: 0
+  Memory_Controller: 3
+  Channel: 1
+  Slot: 0
+  DIMM_Vendor: Hynix
+  DIMM_Register_Vendor: Montage
+  DIMM_Type: RDIMM
+  DRAM_Vendor: Hynix
+  DRAM_Stepping: F.F
+  DRAM_Type: DDR4 SDRAM
+  DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  DIMM_Serial_Number: '0x52EAC7B0'
+  DRAM_Manufacturing_Date: ww8 2019
+  DRAM_Max_Frequency: 2933MHz
+  DRAM_Density: 8Gb
+  Device_Width: x8
+  Device_Ranks: '1'
+PCIe: []
+zephyr_id: ''
+bios_version: WLYDINT1.86B.0030.P19.2210100913
+BoardType: Wilson city RP
+BoardSerial: BQWN93800733
+MicroCodePatch: '0xFD672390'
+IoCards: 0
+Kfir: KTC2
+Probe: XDP,DBC
+PlatformId: '0x1'

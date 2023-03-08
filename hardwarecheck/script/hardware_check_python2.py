@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python2
 ###############################################################################
 #  Hardware Check
 #  By Carlos - Core Team
@@ -11,24 +11,33 @@
 ###############################################################################
 from __future__ import print_function
 from __future__ import absolute_import
-import sys
+import sys, json
 from prettytable import PrettyTable
 from datetime import datetime
-from pathlib import Path
+try:
+    import yaml
+except ImportError:
+    import subprocess 
+    import importlib
+    subprocess.call(['pip', 'install', './yaml/PyYAML-5.4.1-cp27-cp27m-win_amd64.whl'])
+    #importlib.import_module('yaml')
+    import yaml
+
+data_ = r'C:\SVShare\BoardInfo\Output\data.json'
 
 class HardwareChecker:
-    pathfolder_ = Path(r'C:\SVSHARE\User_Apps')
-    data_ = Path(r'C:\SVShare\BoardInfo\Output\data.json')
-    log_ = Path('%s\hardware_check\hardware_verify.log' % pathfolder_) 
-    html_ = Path('%s\hardware_check\hardware_verify.html' % pathfolder_)
-    config_ = Path('%s\hardware_check\conf' % pathfolder_)
-        
-    def __init__(self):
+    pathfolder_ = r'C:\SVSHARE\User_Apps'
+    log_ = r'%s\hardwarecheck\hardware_verify.log' % pathfolder_
+    html_ = r'%s\hardwarecheck\hardware_verify.html' % pathfolder_
+    config_ = r'%s\hardwarecheck\conf' % pathfolder_
+    
+    def __init__(self, data):
         self.por_list = []
+        self.por_ = ""
         self.data_list = []
-        with open(str(self.data_), 'r') as f:
-            self.data_json = eval(f.read_text())
         self.date = datetime.now().strftime('%m/%d/%y at %H:%M')
+        self.data_json = data
+        self.por_yaml = {}
         
     def dict_generator(self, adict, pre=None):
         pre = pre[:] if pre else []
@@ -75,16 +84,16 @@ class HardwareChecker:
                         v = None
                     if v is not None:
                         table.add_row(
-                            ['%s' % item, '%s' % eval("self.por_json"+self.get_str_ptr(tmp)), '%s' % v])
+                            ['%s' % item, '%s' % eval("self.por_yaml"+self.get_str_ptr(tmp)), '%s' % v])
                         table.add_row(['-'*50,'-'*64,'-'*64])
                         break
                     elif i == 1:
                         table.add_row(
-                            ['%s' % item, '%s' % eval("self.por_json"+self.get_str_ptr(tmp)), 'Not present'])
+                            ['%s' % item, '%s' % eval("self.por_yaml"+self.get_str_ptr(tmp)), 'Not present'])
                         table.add_row(['-'*50,'-'*64,'-'*64])
                         break
 
-            for key, item in self.por_json.items():
+            for key, item in self.por_yaml.items():
                 if isinstance(item, list):
                     p = len(item)
                     try:
@@ -106,9 +115,9 @@ class HardwareChecker:
         data = self.dict_generator(self.data_json)
         for data_item in data:
             self.data_list.append(data_item)
-
-        self.por_json = eval(self.por_.read_text())
-        por = self.dict_generator(self.por_json)
+        with open(self.por_, 'r') as f:
+            self.por_yaml = yaml.load(f, Loader=yaml.FullLoader)
+        por = self.dict_generator(self.por_yaml)
         for por_item in por:
             self.por_list.append(por_item)
         for data_item in data:
@@ -127,27 +136,27 @@ class HardwareChecker:
         self.siliconfamily = self.data_json['SiliconFamily']
         
         family_to_path = {
-            "CLX": "CLX.json",
-            "SKX": "SKX.json",
-            "CPX": {1: "CPX_UP.json", 2: "CPX_DP.json"},
-            "ICX": {1: "ICX_UP.json", 2: "ICX_DP.json"},
-            "SPR": {1: "SPR_UP.json", 2: "SPR_DP.json"},
-            "EMR": {1: "EMR_UP.json", 2: "EMR_DP.json"},
-            "GNR": {1: "GNR_UP.json", 2: "GNR_DP.json"},
+            "CLX": {1: "CLX_UP.yaml", 2: "CLX_DP.yaml"},
+            "SKX": {1: "SKX_UP.yaml", 2: "SKX_DP.yaml"},
+            "CPX": {1: "CPX_UP.yaml", 2: "CPX_DP.yaml"},
+            "ICX": {1: "ICX_UP.yaml", 2: "ICX_DP.yaml"},
+            "SPR": {1: "SPR_UP.yaml", 2: "SPR_DP.yaml"},
+            "EMR": {1: "EMR_UP.yaml", 2: "EMR_DP.yaml"},
+            "GNR": {1: "GNR_UP.yaml", 2: "GNR_DP.yaml"},
         }
         
         if self.siliconfamily in family_to_path:
             if isinstance(family_to_path[self.siliconfamily], str):
-                self.por_ = Path(self.config_ / family_to_path[self.siliconfamily])
+                self.por_ = self.config_+"/"+ family_to_path[self.siliconfamily]
                 self.proj = family_to_path[self.siliconfamily]
                 self.get_project()
             elif isinstance(family_to_path[self.siliconfamily], dict):
                 if len(self.data_json['Units']) == 2:
-                    self.por_ = Path(self.config_ / family_to_path[self.siliconfamily][2])
+                    self.por_ = self.config_+"/"+ family_to_path[self.siliconfamily][2]
                     self.proj = family_to_path[self.siliconfamily][2]
                     self.get_project()
                 else:
-                    self.por_ = Path(self.config_ / family_to_path[self.siliconfamily][1])
+                    self.por_ = self.config_+"/"+ family_to_path[self.siliconfamily][1]
                     self.proj = family_to_path[self.siliconfamily][1]
                     self.get_project()
         else:
@@ -155,7 +164,9 @@ class HardwareChecker:
 
 
 if __name__ == '__main__':
-    run = HardwareChecker()
+    with open(str(data_), 'r') as f:
+        data_json = json.load(f)
+    run = HardwareChecker(data_json)
     try:
         run.main()
     except Exception as ex:

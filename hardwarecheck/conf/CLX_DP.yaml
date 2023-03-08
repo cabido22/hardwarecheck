@@ -1,0 +1,128 @@
+---
+# Source: BoardInfo
+SiliconFamily: CLX
+# NumOfCores: 112
+# NumOfThreads: 224
+Units:
+- # UnitSerial: D8KV577700266
+  # Product: CASCADE LAKE-SP-XCC
+  # DataSource: UDM
+  Socket: 0
+  # NumOfCores: 56
+  # NumOfThreads: 112
+  # UnitUlt: L818896A 564 1 1
+  # QDF: QQZ0
+  # UnitStep: B0
+  # FuseRevision: ''
+  # NPKAddress: ''
+  # CpuID: '0x00050656'
+  # AtomStepping: ''
+  Straps: 
+  - 'Strap_BIST_ENABLE: ON'
+  - 'Strap_SAFE_MODE_BOOT: ON'
+  - 'Strap_TXT_PLT_EN: ON'
+  - 'Strap_TXT_AGENT: ON'
+- # UnitSerial: D8KV577700161
+  # Product: CASCADE LAKE-SP-XCC
+  # DataSource: UDM
+  Socket: 1
+  # NumOfCores: 56
+  # NumOfThreads: 112
+  # UnitUlt: L8188050 292 4 -1
+  # QDF: QQZ0
+  # UnitStep: B0
+  # FuseRevision: ''
+  # NPKAddress: ''
+  # CpuID: '0x00050656'
+  # AtomStepping: ''
+  Straps: 
+  - 'Strap_BIST_ENABLE: ON' 
+  - 'Strap_SAFE_MODE_BOOT: ON'
+  - 'Strap_TXT_PLT_EN: ON'
+  - 'Strap_TXT_AGENT: OFF'
+# PchUnits:
+# - UnitUlt: ''
+  # UnitSerial: ''
+  # DataSource: ''
+  # Product: ''
+  # UnitStep: ''
+  # QDF: ''
+Memory:
+- Socket: 0
+  # Memory_Controller: -1
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: Montage
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x52EAC750'
+  # DRAM_Manufacturing_Date: ww8 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 0
+  # Memory_Controller: -1
+  Channel: 3
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: Montage
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x52EAC6CA'
+  # DRAM_Manufacturing_Date: ww8 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  # Memory_Controller: -1
+  Channel: 0
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: Montage
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x52EAC6E1'
+  # DRAM_Manufacturing_Date: ww8 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  #Memory_Controller: -1
+  Channel: 3
+  # Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: Montage
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x52EAC776'
+  # DRAM_Manufacturing_Date: ww8 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+# PCIe: []
+# zephyr_id: ''
+# bios_version: PLYXINT1.PFT.0614.D19.XML_33.SV_32
+# BoardType: NC-P RP
+# BoardSerial: SPNC52500025
+# MicroCodePatch: '0xF1013501'
+# IoCards: 0
+# Kfir: KTC
+# Probe: XDP
+# PlatformId: '0x80'
