@@ -116,7 +116,21 @@ Memory:
   # DRAM_Density: 8Gb
   # Device_Width: x8
   # Device_Ranks: '1'
-# PCIe: []
+PCIe:
+- Slot: b3d00f0
+  Socket: 0
+  CardName: Rubicon
+  RevID: '0x11'
+  Width: 16
+  DeviceID: '0x5375'
+  Gen: 2
+- Slot: b1d00f0
+  Socket: 1
+  CardName: Rubicon
+  RevID: '0x11'
+  Width: 16
+  DeviceID: '0x5375'
+  Gen: 2
 # zephyr_id: ''
 # bios_version: PLYXINT1.PFT.0614.D19.XML_33.SV_32
 # BoardType: NC-P RP
