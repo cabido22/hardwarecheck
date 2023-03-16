@@ -1,0 +1,142 @@
+# ---
+# Source: BoardInfo
+SiliconFamily: CPX
+# NumOfCores: 56
+# NumOfThreads: 56
+Units:
+- # UnitSerial: D956LU9400173
+  # Product: COOPER LAKE SP XCC PRIME
+  # DataSource: UDM
+  Socket: 0
+  # NumOfCores: 28
+  # NumOfThreads: 28
+  # UnitUlt: L9268930 405 -2 -3
+  # QDF: ''
+  # UnitStep: A1
+  # FuseRevision: ''
+  # NPKAddress: ''
+  # CpuID: '0x5065b'
+  # AtomStepping: ''
+  Straps:
+  - 'Strap_BIST_ENABLE: ON'
+  - 'Strap_SAFE_MODE_BOOT: ON'
+  - 'Strap_TXT_PLT_EN: ON'
+  - 'Strap_TXT_AGENT: ON'
+- # UnitSerial: D956LU9400126
+  # Product: COOPER LAKE SP XCC PRIME
+  # DataSource: UDM
+  Socket: 1
+  # NumOfCores: 28
+  # NumOfThreads: 28
+  # UnitUlt: L9268930 412 -2 -3
+  # QDF: ''
+  # UnitStep: A1
+  # FuseRevision: ''
+  # NPKAddress: ''
+  # CpuID: '0x5065b'
+  # AtomStepping: ''
+  Straps:
+  - 'Strap_BIST_ENABLE: ON'
+  - 'Strap_SAFE_MODE_BOOT: ON'
+  - 'Strap_TXT_PLT_EN: ON'
+  - 'Strap_TXT_AGENT: OFF'
+# PchUnits:
+# - UnitUlt: ''
+  # UnitSerial: ''
+  # DataSource: ''
+  # Product: ''
+  # UnitStep: ''
+  # QDF: ''
+Memory:
+- Socket: 0
+  # Memory_Controller: -1
+  Channel: 0
+  Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x72AEF2F1'
+  # DRAM_Manufacturing_Date: ww9 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 0
+  # Memory_Controller: -1
+  Channel: 3
+  Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: IDT
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x72AEF32A'
+  # DRAM_Manufacturing_Date: ww9 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  #Memory_Controller: -1
+  Channel: 0
+  Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: Montage
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x33A743E5'
+  # DRAM_Manufacturing_Date: ww14 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+- Socket: 1
+  #Memory_Controller: -1
+  Channel: 3
+  Slot: 0
+  # DIMM_Vendor: Hynix
+  # DIMM_Register_Vendor: Montage
+  # DIMM_Type: RDIMM
+  # DRAM_Vendor: Hynix
+  # DRAM_Stepping: F.F
+  # DRAM_Type: DDR4 SDRAM
+  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+  # DIMM_Serial_Number: '0x33A74409'
+  # DRAM_Manufacturing_Date: ww14 2019
+  DRAM_Max_Frequency: 2933MHz
+  # DRAM_Density: 8Gb
+  # Device_Width: x8
+  # Device_Ranks: '1'
+PCIe:
+- Socket: 0
+  Slot: b1d00f0
+  Width: 8
+  Gen: 2
+  CardName: Rubicon
+  DeviceID: '0x5375'
+  RevID: '0x11'
+- Socket: 1
+  Slot: b2d00f0
+  Width: 16
+  Gen: 2
+  CardName: Rubicon
+  DeviceID: '0x5375'
+  RevID: '0x11'
+# zephyr_id: ''
+# bios_version: WLYDINT1.86B.0016.P77.2007230008
+# BoardType: Cooper City RVP
+# BoardSerial: BQCY92900026
+# MicroCodePatch: '0xf2582601'
+# IoCards: 0
+# Kfir: ''
+# Probe: XDP
+# PlatformId: '0x80'
