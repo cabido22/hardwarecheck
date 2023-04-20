@@ -1,0 +1,54 @@
+Key,Host: AN4COREPRT065,Host: AN4COREPRT053,Host: AN4COREPRT062
+Name,AN4COREPRT065,AN4COREPRT053,AN4COREPRT062
+SiliconFamily,SKX,SKX,SKX
+BoardType,Neon City RP,Neon City RP,Neon City RP
+NumProcessors,2,2,2
+CpuStep,B1,H0,H0
+Cpu2Step,B1,H0,H0
+SwConfig,CXP1,CXP1,CXP1
+AutomationTool,GEM,GEM,GEM
+InstanceName,MassExecution_AN,MassExecution_AN,MassExecution_AN
+ProjectName,Core_IP-PRT,Core_IP-PRT,Core_IP-PRT
+QualName,SKX,SKX,SKX
+TaskName,NC_B1,NC_H0,NC_H0
+AutomationTool,GEM,GEM,GEM
+GemInstanceName,MassExecution_AN,MassExecution_AN,MassExecution_AN
+InstanceName,MassExecution_AN,MassExecution_AN,MassExecution_AN
+BiosVersion,PLYXINT1.PFT.0614.D19.XML_33.SV_32,PLYXINT1.PFT.0614.D19.XML_33.SV_32,PLYXINT1.PFT.0614.D19.XML_33.SV_32
+BoardType,NC-P RP,NC-P RP,
+NumberOfCores,112,112,112
+NumberOfThreads,224,224,224
+MicroCodePatchVersion,0xF1020171,0xF1066E05,0xF1066E05
+QDF,R2YN,QM2T,QM2T
+NumOfCores,56,56,56
+NumOfThreads,112,112,112
+Socket,0,0,0
+UnitStep,B1,H0,H0
+CpuID,0x00050653,0x00050654,0x00050654
+Straps,"Strap_BIST_ENABLE: ON
+Strap_SAFE_MODE_BOOT: ON
+Strap_TXT_PLT_EN: ON
+Strap_TXT_AGENT: ON","Strap_BIST_ENABLE: ON
+Strap_SAFE_MODE_BOOT: ON
+Strap_TXT_PLT_EN: ON
+Strap_TXT_AGENT: ON","Strap_BIST_ENABLE: ON
+Strap_SAFE_MODE_BOOT: ON
+Strap_TXT_PLT_EN: ON
+Strap_TXT_AGENT: ON"
+Socket,1,1,1
+UnitStep,B1,H0,H0
+CpuID,0x00050653,0x00050654,0x00050654
+Straps,"Strap_BIST_ENABLE: ON
+Strap_SAFE_MODE_BOOT: ON
+Strap_TXT_PLT_EN: ON
+Strap_TXT_AGENT: OFF","Strap_BIST_ENABLE: ON
+Strap_SAFE_MODE_BOOT: ON
+Strap_TXT_PLT_EN: ON
+Strap_TXT_AGENT: OFF","Strap_BIST_ENABLE: ON
+Strap_SAFE_MODE_BOOT: ON
+Strap_TXT_PLT_EN: ON
+Strap_TXT_AGENT: OFF"
+Channel,0,0,0
+Slot,0,0,0
+DRAM_Max_Frequency,2933MHz,2933MHz,2933MHz
+Tags,"HT_OFF","DP","DP"

@@ -1,42 +1,41 @@
----
 # Source: BoardInfo
-SiliconFamily: CLX
+SiliconFamily: SKX
 # NumOfCores: 112
 # NumOfThreads: 224
 Units:
-- # UnitSerial: D8KV577700266
-  # Product: CASCADE LAKE-SP-XCC
+- #UnitSerial: D6B47Y2500240
+  # Product: SKYLAKE-28
   # DataSource: UDM
   Socket: 0
   # NumOfCores: 56
   # NumOfThreads: 112
-  # UnitUlt: L818896A 564 1 1
-  # QDF: QQZ0
-  # UnitStep: B0
+  # UnitUlt: H6278540 260 -4 2
+  # QDF: QM2T
+  # UnitStep: H0
   # FuseRevision: ''
   # NPKAddress: ''
-  # CpuID: '0x00050656'
+  # CpuID: '0x00050654'
   # AtomStepping: ''
-  Straps: 
-  - 'Strap_BIST_ENABLE: ON'
+  Straps:
+  - 'Strap_BIST_ENABLE: OFF' #ON
   - 'Strap_SAFE_MODE_BOOT: ON'
   - 'Strap_TXT_PLT_EN: ON'
   - 'Strap_TXT_AGENT: ON'
-- # UnitSerial: D8KV577700161
-  # Product: CASCADE LAKE-SP-XCC
+- #UnitSerial: D6B47Y2500275
+  # Product: SKYLAKE-28
   # DataSource: UDM
   Socket: 1
   # NumOfCores: 56
   # NumOfThreads: 112
-  # UnitUlt: L8188050 292 4 -1
-  # QDF: QQZ0
-  # UnitStep: B0
+  # UnitUlt: H6278540 224 4 0
+  # QDF: QM2T
+  # UnitStep: H0
   # FuseRevision: ''
   # NPKAddress: ''
-  # CpuID: '0x00050656'
+  # CpuID: '0x00050654'
   # AtomStepping: ''
-  Straps: 
-  - 'Strap_BIST_ENABLE: ON' 
+  Straps:
+  - 'Strap_BIST_ENABLE: ON'
   - 'Strap_SAFE_MODE_BOOT: ON'
   - 'Strap_TXT_PLT_EN: ON'
   - 'Strap_TXT_AGENT: OFF'
@@ -51,7 +50,7 @@ Memory:
 - Socket: 0
   # Memory_Controller: -1
   Channel: 0
-  # Slot: 0
+  Slot: 0
   # DIMM_Vendor: Hynix
   # DIMM_Register_Vendor: Montage
   # DIMM_Type: RDIMM
@@ -59,8 +58,8 @@ Memory:
   # DRAM_Stepping: F.F
   # DRAM_Type: DDR4 SDRAM
   # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
-  # DIMM_Serial_Number: '0x52EAC750'
-  # DRAM_Manufacturing_Date: ww8 2019
+  # DIMM_Serial_Number: '0x33A743F3'
+  # DRAM_Manufacturing_Date: ww14 2019
   DRAM_Max_Frequency: 2933MHz
   # DRAM_Density: 8Gb
   # Device_Width: x8
@@ -68,7 +67,7 @@ Memory:
 - Socket: 0
   # Memory_Controller: -1
   Channel: 3
-  # Slot: 0
+  Slot: 0
   # DIMM_Vendor: Hynix
   # DIMM_Register_Vendor: Montage
   # DIMM_Type: RDIMM
@@ -76,8 +75,8 @@ Memory:
   # DRAM_Stepping: F.F
   # DRAM_Type: DDR4 SDRAM
   # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
-  # DIMM_Serial_Number: '0x52EAC6CA'
-  # DRAM_Manufacturing_Date: ww8 2019
+  # DIMM_Serial_Number: '0x33A743F4'
+  # DRAM_Manufacturing_Date: ww14 2019
   DRAM_Max_Frequency: 2933MHz
   # DRAM_Density: 8Gb
   # Device_Width: x8
@@ -85,7 +84,7 @@ Memory:
 - Socket: 1
   # Memory_Controller: -1
   Channel: 0
-  # Slot: 0
+  Slot: 0
   # DIMM_Vendor: Hynix
   # DIMM_Register_Vendor: Montage
   # DIMM_Type: RDIMM
@@ -93,16 +92,16 @@ Memory:
   # DRAM_Stepping: F.F
   # DRAM_Type: DDR4 SDRAM
   # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
-  # DIMM_Serial_Number: '0x52EAC6E1'
-  # DRAM_Manufacturing_Date: ww8 2019
+  # DIMM_Serial_Number: '0x33A74371'
+  # DRAM_Manufacturing_Date: ww14 2019
   DRAM_Max_Frequency: 2933MHz
   # DRAM_Density: 8Gb
   # Device_Width: x8
   # Device_Ranks: '1'
 - Socket: 1
-  #Memory_Controller: -1
+  # Memory_Controller: -1
   Channel: 3
-  # Slot: 0
+  Slot: 0
   # DIMM_Vendor: Hynix
   # DIMM_Register_Vendor: Montage
   # DIMM_Type: RDIMM
@@ -110,19 +109,33 @@ Memory:
   # DRAM_Stepping: F.F
   # DRAM_Type: DDR4 SDRAM
   # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
-  # DIMM_Serial_Number: '0x52EAC776'
-  # DRAM_Manufacturing_Date: ww8 2019
+  # DIMM_Serial_Number: '0x33A7437D'
+  # DRAM_Manufacturing_Date: ww14 2019
   DRAM_Max_Frequency: 2933MHz
   # DRAM_Density: 8Gb
   # Device_Width: x8
   # Device_Ranks: '1'
-# PCIe: []
+PCIe:
+- Slot: b3d00f0
+  Socket: 0
+  CardName: Rubicon
+  RevID: '0x11'
+  Width: 16
+  DeviceID: '0x5375'
+  Gen: 2
+- Slot: b1d00f0
+  Socket: 1
+  CardName: Rubicon
+  RevID: '0x11'
+  Width: 16
+  DeviceID: '0x5375'
+  Gen: 2
 # zephyr_id: ''
 # bios_version: PLYXINT1.PFT.0614.D19.XML_33.SV_32
-# BoardType: NC-P RP
-# BoardSerial: SPNC52500025
-# MicroCodePatch: '0xF1013501'
-# IoCards: 0
+# BoardType: ''
+# BoardSerial: ''
+# MicroCodePatch: '0xF1066E05'
+# IoCards: 2
 # Kfir: KTC
 # Probe: XDP
 # PlatformId: '0x80'

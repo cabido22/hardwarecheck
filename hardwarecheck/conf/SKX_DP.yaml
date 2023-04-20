@@ -1,143 +1,266 @@
----
-# Source: BoardInfo
+# ---
+# Id: 609d6c6ac0fd64580a5d9ed1
+# Name: AN4COREPRT053
 SiliconFamily: SKX
-# NumOfCores: 112
-# NumOfThreads: 224
-Units:
-- # UnitSerial: D6B47Y2500088
-  # Product: SKYLAKE-28
-  # DataSource: UDM
-  Socket: 0
-  # NumOfCores: 56
-  # NumOfThreads: 112
-  # UnitUlt: H6278540 254 -4 -1
-  # QDF: QM2T
-  # UnitStep: H0
-  # FuseRevision: ''
-  # NPKAddress: ''
-  # CpuID: '0x00050654'
-  # AtomStepping: ''
-  Straps:
-  - 'Strap_BIST_ENABLE: ON'
-  - 'Strap_SAFE_MODE_BOOT: ON'
-  - 'Strap_TXT_PLT_EN: ON'
-  - 'Strap_TXT_AGENT: ON'
-- # UnitSerial: D6NV601100359
-  # Product: SKYLAKE-28
-  # DataSource: UDM
-  Socket: 1
-  # NumOfCores: 56
-  # NumOfThreads: 112
-  # UnitUlt: H6278550 266 -2 2
-  # QDF: QM2T
-  # UnitStep: H0
-  # FuseRevision: ''
-  # NPKAddress: ''
-  # CpuID: '0x00050654'
-  # AtomStepping: ''
-  Straps:
-  - 'Strap_BIST_ENABLE: ON'
-  - 'Strap_SAFE_MODE_BOOT: ON'
-  - 'Strap_TXT_PLT_EN: ON'
-  - 'Strap_TXT_AGENT: OFF'
-# PchUnits:
-# - UnitUlt: ''
-  # UnitSerial: ''
-  # DataSource: ''
-  # Product: ''
-  # UnitStep: ''
-  # QDF: ''
-Memory:
-- Socket: 0
-  # Memory_Controller: -1
-  Channel: 0
-  Slot: 0
-  # DIMM_Vendor: Hynix
-  # DIMM_Register_Vendor: Montage
-  # DIMM_Type: RDIMM
-  # DRAM_Vendor: Hynix
-  # DRAM_Stepping: F.F
-  # DRAM_Type: DDR4 SDRAM
-  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
-  # DIMM_Serial_Number: '0x33A74437'
-  # DRAM_Manufacturing_Date: ww14 2019
-  DRAM_Max_Frequency: 2933MHz
-  # DRAM_Density: 8Gb
-  # Device_Width: x8
-  # Device_Ranks: '1'
-- Socket: 0
-  # Memory_Controller: -1
-  Channel: 3
-  # Slot: 0
-  # DIMM_Vendor: Hynix
-  # DIMM_Register_Vendor: Montage
-  # DIMM_Type: RDIMM
-  # DRAM_Vendor: Hynix
-  # DRAM_Stepping: F.F
-  # DRAM_Type: DDR4 SDRAM
-  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
-  # DIMM_Serial_Number: '0x33A7442C'
-  # DRAM_Manufacturing_Date: ww14 2019
-  DRAM_Max_Frequency: 2933MHz
-  # DRAM_Density: 8Gb
-  # Device_Width: x8
-  # Device_Ranks: '1'
-- Socket: 1
-  # Memory_Controller: -1
-  Channel: 0
-  Slot: 0
-  # DIMM_Vendor: Hynix
-  # DIMM_Register_Vendor: Montage
-  # DIMM_Type: RDIMM
-  # DRAM_Vendor: Hynix
-  # DRAM_Stepping: F.F
-  # DRAM_Type: DDR4 SDRAM
-  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
-  # DIMM_Serial_Number: '0x33A743FD'
-  # DRAM_Manufacturing_Date: ww14 2019
-  DRAM_Max_Frequency: 2933MHz
-  # DRAM_Density: 8Gb
-  # Device_Width: x8
-  # Device_Ranks: '1'
-- Socket: 1
-  # Memory_Controller: -1
-  Channel: 3
-  Slot: 0
-  # DIMM_Vendor: Hynix
-  # DIMM_Register_Vendor: IDT
-  # DIMM_Type: RDIMM
-  # DRAM_Vendor: Hynix
-  # DRAM_Stepping: F.F
-  # DRAM_Type: DDR4 SDRAM
-  # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
-  # DIMM_Serial_Number: '0x33A74152'
-  # DRAM_Manufacturing_Date: ww14 2019
-  DRAM_Max_Frequency: 2933MHz
-  # DRAM_Density: 8Gb
-  # Device_Width: x8
-  # Device_Ranks: '1'
-PCIe:
-- Slot: b3d00f0
-  Socket: 0
-  CardName: Rubicon
-  RevID: '0x11'
-  Width: 16
-  DeviceID: '0x5375'
-  Gen: 2
-- Slot: b1d00f0
-  Socket: 1
-  CardName: Rubicon
-  RevID: '0x11'
-  Width: 16
-  DeviceID: '0x5375'
-  Gen: 2
-# zephyr_id: ''
-# bios_version: PLYXINT1.PFT.0614.D19.XML_33.SV_32
-# BoardType: ''
-# BoardSerial: ''
-# MicroCodePatch: '0xF1066E05'
-# IoCards: 2
-# Kfir: KTC
-# Probe: XDP
-# PlatformId: '0x80'
-
+# BoardType: Neon City RP
+# NumProcessors: 2
+# McpStep: ''
+# CpuStep: H0
+# Cpu2Step: H0
+# PchStep: B0
+# ResourceType: Target
+# ToolContent: Cafe
+# SwConfig: CXP1
+# Site: AN
+# MajorGroup: Xeon SV Core-AN
+# ZordonStatus: Functional
+# ZordonAutoUpdaterStatus: Functional
+# ZordonAutoUpdaterVersion: 2.5.0
+# BoardInfoVersion: 4.45.1
+# ZordonClientVersion: 2.5.12
+# SystemVersion: CoreIP_SystemVersion_Python27_Ver_22.02.02.1
+# Activity: PRT
+# AutomationTool: GEM
+# AutomationProject: ''
+# InstanceName: MassExecution_AN
+# Location: AN4-1B AVC/SV LAB/B180-M1
+# HostSettings:
+  # OsVersion: Windows Server 2019 Datacenter
+  # IpAddress: 10.241.156.29
+  # SerialNumber: 2UA2460SGB
+  # Model: HP Z220 CMT Workstation
+  # OrganizationalUnit: OU=PROD,OU=Validation,OU=GDL,OU=Customer Labs,OU=Engineering
+    # Computing,OU=Resources,DC=amr,DC=corp,DC=intel,DC=com
+  # FilterAdministratorToken:
+  # EnableUIADesktopToggle:
+  # ConsentPromptBehaviorAdmin:
+  # ConsentPromptBehaviorUser:
+  # EnableInstallerDetection:
+  # ValidateAdminCodeSignatures:
+  # EnableSecureUIAPaths:
+  # EnableLUA: 0
+  # PromptOnSecureDesktop:
+  # EnableVirtualization:
+# PerformanceCounters:
+  # LastUpTime: '2023-03-09T11:43:34.665-06:00'
+  # LastShutdownTime: '2023-03-07T14:29:41.278-06:00'
+  # CpuCounter: 9.47
+  # RamCounter: 46
+  # DiskSpaceUsage: 68.21
+  # DiskIOUsage: 0.025
+  # NetworkUsage: 0
+  # SystemName: AN4COREPRT053
+  # TimeStamp: '2023-04-06T16:48:18.665-05:00'
+  # RebuildTime: '2022-02-05T16:53:54-06:00'
+# Processes: []
+# AutoStatus:
+  # ProjectName: Core_IP-PRT
+  # ProjectId: 25844
+  # QualName: SKX
+  # QualId: 26005
+  # TaskName: NC_H0
+  # TaskId: 26006
+  # VpName: ''
+  # VpId:
+  # ExclusiveFlag: true
+  # Runnable: true
+  # AutomationTool: GEM
+  # MajorStatus: User Lock
+  # SecondaryStatus: Maintenance
+  # LockedUserName: lab_an4cafe
+  # LockComment: Task accomplished
+  # TargetComment: ''
+  # TimeStamp: '2023-04-06T16:48:23.286-05:00'
+  # MaxGenerator: 0
+  # GemInstanceName: MassExecution_AN
+  # HexaInstanceName:
+  # InstanceName: MassExecution_AN
+  # ConfigName:
+  # DisableReason:
+  # Enabled:
+  # ExecutionState:
+  # Id:
+  # NgaId:
+  # IdleFlowState:
+  # Location:
+  # MasterAgent:
+  # Name:
+  # Pool:
+  # NgaPools:
+  # ReservationExpirationDate:
+  # ReservedBy:
+  # Site:
+  # State:
+  # StationAgents:
+  # NgaStationAgent:
+  # SubState:
+  # TestId:
+  # UpdatedBy:
+  # UpdatedDate:
+  # Comment:
+# Reservation:
+  # WaitingList:
+  # Username:
+  # DisplayName:
+  # GivenName:
+  # EmailAddress:
+  # Comment:
+  # Photo:
+  # Status: Available
+  # Since:
+  # Until:
+  # FirstNotification: false
+  # SecondNotification: false
+BoardInfo:
+  # ModifiedTime: '2023-03-30T13:20:30.049-05:00'
+  BiosVersion: PLYXINT1.PFT.0614.D19.XML_33.SV_32
+  # ZephyrId: ''
+  # BoardType: NC-P RP
+  # BoardSerialNumber: SPNC50900012
+  # NumberOfCores: 112
+  # NumberOfThreads: 224
+  MicroCodePatchVersion: '0xF1066E05'
+  # PlatformId: '0x80'
+  Units:
+   - #UnitSerial: D6B47Y2500240
+    # UnitUlt: H6278540 260 -4 2
+    QDF: QM2T
+    # Location: ''
+    # FuseRevision: ''
+    # NumOfCores: 56
+    # NumOfThreads: 112
+    # Socket:
+    # NPKAddress: ''
+    # Product: SKYLAKE-28
+    UnitStep: H0
+    # CdieStep: ''
+    # AtomStepping: ''
+    CpuID: '0x00050654'
+    Straps:
+    - 'Strap_BIST_ENABLE: ON'
+    - 'Strap_SAFE_MODE_BOOT: ON'
+    - 'Strap_TXT_PLT_EN: ON'
+    - 'Strap_TXT_AGENT: ON'
+   - # UnitSerial: D6B47Y2500275
+    # UnitUlt: H6278540 224 4 0
+    QDF: QM2T
+    # Location: ''
+    # FuseRevision: ''
+    # NumOfCores: 56
+    # NumOfThreads: 112
+    # Socket:
+    # NPKAddress: ''
+    # Product: SKYLAKE-28
+    UnitStep: H0
+    # CdieStep: ''
+    # AtomStepping: ''
+    CpuID: '0x00050654'
+    Straps:
+    - 'Strap_BIST_ENABLE: ON'
+    - 'Strap_SAFE_MODE_BOOT: ON'
+    - 'Strap_TXT_PLT_EN: ON'
+    - 'Strap_TXT_AGENT: OFF'
+  # PchUnits:
+  # - UnitSerial: N/A
+    # UnitUlt: ''
+    # QDF: N/A
+    # Location: ''
+    # Product: ''
+    # UnitStep: ''
+  Memory:
+  - Socket: 0
+    # Memory_Controller: -1
+    Channel: 0
+    Slot: 0
+    # DIMM_Type: RDIMM
+    # DIMM_Register_Vendor: Montage
+    # DIMM_Serial_Number: '0x33A743F3'
+    # DIMM_Vendor: Hynix
+    # DRAM_Type: DDR4 SDRAM
+    # DRAM_Density: 8Gb
+    DRAM_Max_Frequency: 2933MHz
+    # DRAM_Vendor: Hynix
+    # DRAM_Stepping: F.F
+    # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+    # DRAM_Manufacturing_Date: ww14 2019
+    # Device_Width: x8
+    # Device_Ranks: 1
+  - Socket: 0
+    # Memory_Controller: -1
+    Channel: 3
+    Slot: 0
+    # DIMM_Type: RDIMM
+    # DIMM_Register_Vendor: Montage
+    # DIMM_Serial_Number: '0x33A743F4'
+    # DIMM_Vendor: Hynix
+    # DRAM_Type: DDR4 SDRAM
+    # DRAM_Density: 8Gb
+    DRAM_Max_Frequency: 2933MHz
+    # DRAM_Vendor: Hynix
+    # DRAM_Stepping: F.F
+    # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+    # DRAM_Manufacturing_Date: ww14 2019
+    # Device_Width: x8
+    # Device_Ranks: 1
+  - Socket: 1
+    # Memory_Controller: -1
+    Channel: 0
+    Slot: 0
+    # DIMM_Type: RDIMM
+    # DIMM_Register_Vendor: Montage
+    # DIMM_Serial_Number: '0x33A74371'
+    # DIMM_Vendor: Hynix
+    # DRAM_Type: DDR4 SDRAM
+    # DRAM_Density: 8Gb
+    DRAM_Max_Frequency: 2933MHz
+    # DRAM_Vendor: Hynix
+    # DRAM_Stepping: F.F
+    # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+    # DRAM_Manufacturing_Date: ww14 2019
+    # Device_Width: x8
+    # Device_Ranks: 1
+  - Socket: 1
+    # Memory_Controller: -1
+    # Channel: 3
+    Slot: 0
+    # DIMM_Type: RDIMM
+    # DIMM_Register_Vendor: Montage
+    # DIMM_Serial_Number: '0x33A7437D'
+    # DIMM_Vendor: Hynix
+    # DRAM_Type: DDR4 SDRAM
+    # DRAM_Density: 8Gb
+    DRAM_Max_Frequency: 2933MHz
+    # DRAM_Vendor: Hynix
+    # DRAM_Stepping: F.F
+    # DRAM_Manufacturing_Part_Number: HMA81GR7CJR8N-WM
+    # DRAM_Manufacturing_Date: ww14 2019
+    # Device_Width: x8
+    # Device_Ranks: 1
+  # IoCards: 2
+  # Probe: XDP
+  # Kfir: KTC
+  Pcies:
+  - Socket: 0
+    Slot: b3d00f0
+    Width: '16'
+    Gen: '2'
+    SecBus:
+    SubBus:
+    CardName: Rubicon
+    DeviceId: '0x5375'
+    RevId: '0x11'
+  - Socket: 1
+    Slot: b1d00f0
+    Width: '16'
+    Gen: '2'
+    SecBus:
+    SubBus:
+    CardName: Rubicon
+    DeviceId: '0x5375'
+    RevId: '0x11'
+Tags:
+- DP
+# MaxReservation: 365
+# RequiredSystemVersion:
+# DisableAutoDeployment: false
+# Domain: AMR.CORP.INTEL.COM
