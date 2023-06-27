@@ -17,18 +17,24 @@ from datetime import datetime
 from pathlib import Path
 import yaml
 import json
+import os
+import time
 
 
 
 class HardwareChecker:
     path_folder_ = Path(r'C:\SVSHARE\User_Apps')
-    #data_ = Path(r'C:\SVShare\BoardInfo\Output\data.json')
-    data_ = Path(r'C:\SVSHARE\ExecutionScripts\CurrentZordonSystem\ZordonSystem.json')
     log_ = Path(f'{path_folder_}\Hardwarecheck\hardwarecheck_fail.log')
     html_ = Path(f'{path_folder_}\Hardwarecheck\hardwarecheck_fail.html')
     config_ = Path(f'{path_folder_}\Hardwarecheck\conf')
     log_path =  Path(f'{path_folder_}\Hardwarecheck')
-    
+    #data_ = Path(r'C:\SVShare\BoardInfo\Output\data.json')
+    data_ = Path(r'C:\SVSHARE\ExecutionScripts\CurrentZordonSystem\ZordonSystem.json')
+    if data_.is_file():
+        os.remove(data_)
+    while not data_.is_file():
+        time.sleep(5)
+        data_ = Path(r'C:\SVSHARE\ExecutionScripts\CurrentZordonSystem\ZordonSystem.json')
         
     def __init__(self):
         self.por_list = []

@@ -14,6 +14,7 @@ from __future__ import absolute_import
 import sys, json, os
 from prettytable import PrettyTable
 from datetime import datetime
+import time
 try:
     import yaml
 except ImportError:
@@ -24,6 +25,12 @@ except ImportError:
     import yaml
 
 data_ = r'C:\SVSHARE\ExecutionScripts\CurrentZordonSystem\ZordonSystem.json'
+if os.path.isfile(data_):
+    os.remove(data_)
+while not os.path.isfile(data_):
+    time.sleep(5)
+data_ = r'C:\SVSHARE\ExecutionScripts\CurrentZordonSystem\ZordonSystem.json'
+
 
 class HardwareChecker:
     pathfolder_ = r'C:\SVSHARE\User_Apps'
