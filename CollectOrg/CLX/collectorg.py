@@ -212,49 +212,49 @@ class PostElFile(ResFile):
 		for item in self.map_thread2apic:
 			self.map_apic2thread[self.map_thread2apic[item]] = item
 
-class ResFile(ResFile):
-	def __init__(self, resfile):
-		super(ResFile, self).__init__(resfile)
-	def parse(self):
-		"""Parse the threads and cs:rip for the threads in the file pointed to by filename"""
-		import re
-		threadslist = []
-		numthread = 0
-		section_re = re.compile(r"apicid=\[\d+b\] (0x[0-9a-fA-F]+).*?rip = \[\d+b\] (0x[0-9a-fA-F]+)..cs = \[\d+b\] (0x[0-9a-fA-F]+)", re.DOTALL)
-		no_halt_re = re.compile(r"can't halt thread (0x[0-9a-fA-F]+)")
-		with open(self.filename) as fp:
-			data = fp.read()
-			for res in section_re.findall(data):
-				threadslist.append((res[0], res[2], res[3]))
-			for res in no_halt_re.findall(data):
-				self.thread_halted[int(res, 16)] = False
-		cs = ""
-		rip = ""
-		for thread in threadslist:
-			numthread = int(thread[0],16)
-			try:
-				thread_halt = thread[1]
-				self.thread_halted[numthread] = True
-				cs = thread[2]
-				cs = int(cs, 16)
-				self.thread_cs[numthread] = cs
-				rip = thread[1]
-				rip = int(rip, 16)
-				self.thread_rip[numthread] = rip
-			except: #thread halt must have failed with ERROR message 
-				_log.result("Skipping thread: %d Thread halt resulted in error"%numthread)
-				self.thread_halted[numthread] = False
-				continue
-		apicid = 0
-		temp = ""
-		apic_temp = 0
-		for thread in threadslist:
-			numthread = int(thread[0],16)
-			apic_temp = thread[0]
-			apicid = int(apic_temp, 16)
-			self.map_thread2apic[numthread] = apicid
-		for item in self.map_thread2apic:
-			self.map_apic2thread[self.map_thread2apic[item]] = item
+# class ResFile1(ResFile):
+	# def __init__(self, resfile):
+		# super(ResFile, self).__init__(resfile)
+	# def parse(self):
+		# """Parse the threads and cs:rip for the threads in the file pointed to by filename"""
+		# import re
+		# threadslist = []
+		# numthread = 0
+		# section_re = re.compile(r"apicid=\[\d+b\] (0x[0-9a-fA-F]+).*?rip = \[\d+b\] (0x[0-9a-fA-F]+)..cs = \[\d+b\] (0x[0-9a-fA-F]+)", re.DOTALL)
+		# no_halt_re = re.compile(r"can't halt thread (0x[0-9a-fA-F]+)")
+		# with open(self.filename) as fp:
+			# data = fp.read()
+			# for res in section_re.findall(data):
+				# threadslist.append((res[0], res[2], res[3]))
+			# for res in no_halt_re.findall(data):
+				# self.thread_halted[int(res, 16)] = False
+		# cs = ""
+		# rip = ""
+		# for thread in threadslist:
+			# numthread = int(thread[0],16)
+			# try:
+				# thread_halt = thread[1]
+				# self.thread_halted[numthread] = True
+				# cs = thread[2]
+				# cs = int(cs, 16)
+				# self.thread_cs[numthread] = cs
+				# rip = thread[1]
+				# rip = int(rip, 16)
+				# self.thread_rip[numthread] = rip
+			# except: #thread halt must have failed with ERROR message 
+				# _log.result("Skipping thread: %d Thread halt resulted in error"%numthread)
+				# self.thread_halted[numthread] = False
+				# continue
+		# apicid = 0
+		# temp = ""
+		# apic_temp = 0
+		# for thread in threadslist:
+			# numthread = int(thread[0],16)
+			# apic_temp = thread[0]
+			# apicid = int(apic_temp, 16)
+			# self.map_thread2apic[numthread] = apicid
+		# for item in self.map_thread2apic:
+			# self.map_apic2thread[self.map_thread2apic[item]] = item
 
 class Collect:
 	def __init__(self):
@@ -464,6 +464,10 @@ def run_flow(action):
 
        from ini2html import ini2html
        ini2html(resfile,apath+"\\res.html")
+       
+       # """Created json2hmtl script output json file - Carlos"""
+       # from json2html import json2html
+       # json2html(resfile,apath+"\\res.html")
 
        action.log("CollectOrg: Done")
        _log.closeFile()
@@ -547,17 +551,14 @@ def debug_run_flow():
        #action.log("ResFile: %s" % resfile)
 
        rptfile = getrptfile(rpath)	
-       #action.log("rptFile=%s"%rptfile)
-       #import pdb; pdb.set_trace()
+       #action.log("rptFile=%s"%rptfile)`
+       
        collect = Collect()
+       #import pdb;pdb.set_trace()
        collect.start(resfile, rptfile, apath)
+       from ini2html import ini2html
+       ini2html(resfile,apath+"\\res.html")
        
-       # from ini2html import ini2html
-       # ini2html(resfile,apath+"\\res.html")
-       
-       """Created json2hmtl script output json file - Carlos"""
-       from json2html import json2html
-       json2html(resfile,apath+"\\res.html")
 
        #action.log("CollectOrg: Done")
        _log.closeFile()

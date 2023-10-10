@@ -1,0 +1,3 @@
+install.bat
+exclude.txt
+.git

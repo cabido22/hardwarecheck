@@ -1,0 +1,656 @@
+#!/usr/bin/python3
+################################################################################
+#  PatchRegression
+#  By Tommy Castilleja
+#
+#
+#  This script is to automatically perform Patch regressions
+#   1. Remove old patches stitched in BIOS and stitches new patch
+#   2. Copies ucode and stitched bios to share drive called out in ini file
+#   3. Stitches knobs of each software config and moves to correct share drive 
+#   4. Flash BIOS per software config specified or from swconfig in env var
+#   5. Unlocks station after it has reached F5 or F6   
+#
+################################################################################
+
+from __future__ import print_function
+from __future__ import absolute_import
+import argparse
+import os, sys, re
+os.system("")
+from os import path
+import time
+from datetime import datetime, timedelta
+import subprocess
+time.sleep(.5)
+import glob
+import logging
+import progressbar
+
+import configparser
+config = configparser.ConfigParser()
+print(os.path.realpath(sys.argv[0]))
+script_path = os.path.realpath(sys.argv[0])
+ini_path = '%s\\patch_regression.ini' % '\\'.join(script_path.split('\\')[0:-1])
+config.read(ini_path)
+
+if r'C:\SVSHARE\User_Apps\TTK2' not in sys.path: sys.path.append(r"C:\SVSHARE\User_Apps\TTK2")
+if r'C:\SVSHARE\User_Apps\TTK2\API\Python\Examples' not in sys.path: sys.path.append(r"C:\SVSHARE\User_Apps\TTK2\API\Python\Examples")
+if r'C:\SVSHARE\User_Apps\TTK2\API\Python' not in sys.path: sys.path.append(r"C:\SVSHARE\User_Apps\TTK2\API\Python")
+
+from TTK2_ConfigManager import *
+from TTK2_Port_80 import *
+
+import shutil
+from pathlib import Path as p
+
+#List of local variables to be used throughout script
+class Variables:
+    cpuid = ''
+    project = ''
+    patch = ''
+    step = ''
+    mode = ''
+    cli_bios_path = ''
+    cpustep = ''
+    fullpatchname = ''
+    stitchedBiosPth = ''
+    ver = ''
+    KnobStitchIsSkipped = ''
+    ulockCheck = ''
+    
+vars = Variables()
+
+#this will list all binaries in a directory
+def listBins():
+   
+    fullPth = None
+    fle = os.listdir(vars.cli_bios_path)
+    for x in fle:
+        if x.endswith('.bin'):
+            fullPth = (vars.cli_bios_path +'\\'+ x)
+    if fullPth == None:
+        return(args.bios)
+    else:
+        return(fullPth)
+
+
+
+def ucodeUpdate(bios_path, ucode_path):
+    
+    import pysvtools.xmlcli.XmlCli as cli
+    
+    if args.delpatch == True:
+        # Try to remove old patches from BIOS in argument 
+        try:
+            secHeader('Removing Old Ucode patches')
+            cli.ProcessUcode("deleteall", bios_path)
+            secFooter('Remove Old Ucode patches')
+        except:
+
+            plog('error','Error in removing old patches from binary')
+            
+    try:
+        # Rename new BIOS with now patches 
+        fp = listBins()
+                  
+        if fp != bios_path:
+            l = fp.split('\\')[-1].split('_',5)[0:5]
+            binName = ucode_path.split('\\')[-1]
+            strippedBin = r'%s.bin' % ("_".join(l))
+            fullPath = '%s\\%s' % (vars.cli_bios_path, strippedBin)
+            os.rename(fp, fullPath)
+        else:
+            # if no pathces were removed from BIOS then use the original bios
+            fullPath = bios_path
+    except:
+        plog('warn', 'No patch detected in BIOS')
+        
+    try:
+        # Try to update new BIOS with new patch from argument
+        secHeader('Ucode Patch Updating')
+        cli.ProcessUcode("update", fullPath.strip(), ucode_path)
+        # Get new BIOS from directory
+        updatedBin = listBins()
+        plog('info','Updated Bios: %s' % updatedBin)
+        secFooter('Ucode Patch Update')
+        return(updatedBin)
+    except:
+        plog('error', 'Error in Ucode update')
+        
+    
+        
+def removeOldBios():
+    #Remove old bios from xmlcli folder before creating new bios
+
+    fle = os.listdir(vars.cli_bios_path)
+    secHeader('Remove Old Bios')
+    for x in fle:
+        if x.endswith('.bin'):
+            os.remove('%s\\%s' % (vars.cli_bios_path,x))
+            
+    secFooter('Remove Old Bios')
+        
+def getPath(project, cpustep, cpuid, mode, newBios): #ORIGINAL
+    
+    #getting path to BIOS if the swconfig knobs were not stitched
+    an_knobstitch_path = config['AN_KNOBSTITCH_PATH']
+    biosOutdir = an_knobstitch_path['biosOutdir']
+    biosOutdir = '%s\\%s\\%s_%s\\%s\\%s' % (biosOutdir, vars.project, vars.cpuid, vars.step, vars.mode, vars.patch)
+    sharedrive_Bios = '%s\\%s' % (biosOutdir, os.path.split(args.bios)[1])
+    
+    #Copy BIOS to share drive
+    try:
+        if os.path.exists(sharedrive_Bios) == False:
+            secHeader('Copying stitched binary to Share Drive')
+            shutil.copyfile(newBios, sharedrive_Bios)
+            secFooter('Copying stitched binary')
+        else:
+            plog('warn', 'Binary File path exists: \n%s\nNo need to copy binary' % sharedrive_Bios)
+    except:
+        plog('error', 'Error in copying bin files to shared dir')
+        
+    return(movedBiosPath)
+      
+def flashingBios(stitchedBiosPth, task):
+    secHeader('Flash BIOS')
+    an_paths = config['AN_PATHS']
+    all_projects = config['PROJECTS']
+    
+    #Use latest bios package to flash bios. using hardcoded biospackage path
+
+    flasher = '%s\\BiosPackage.py' % an_paths['BiosPackage_Path']
+    
+    flashBIOS = ''
+    # if user does not copy binaries to new path then bios in arg will be used
+    if args.copy == False:
+        flashBIOS = args.bios
+        plog('notify','Using Raw BIOS provided')
+        if args.task != None:
+            plog('notify','Ignoring task option used in order to use raw BIOS')
+        elif args.delpatch == True:
+            plog('notify','Ignoring delete patch option used in order to use raw BIOS')
+
+    else:
+        #Check if binary with task(swconfig) located in dir   
+        if '.bin' in stitchedBiosPth:
+            stitchedBiosPth = os.path.split(stitchedBiosPth)[0]
+
+        list_of_files = glob.glob('%s\\*' % stitchedBiosPth)
+        for file in list_of_files:
+            if task in file:
+                flashBIOS = file
+
+    decision = ''
+    if flashBIOS == '':
+
+        if args.ucode != None:
+            plog('warn', 'No BIOS located for this SwConfig: %s' % task)
+            vars.ulockCheck = False
+        else:
+            plog('warn','Please remove all switches other than -f or -ul when flashing raw BIOS')
+            vars.ulockCheck = False
+    else:
+
+        plog('warn', 'BIOS to be Flashed: %s' % flashBIOS)
+        if vars.project.strip() == '':
+            if args.copy == False:
+                for proj in config['PROJECTS']:
+                    if all_projects[proj].split('_')[0] in flashBIOS:
+                        vars.project = all_projects[proj].split('_')[0]
+                decision = 'yes'
+        if vars.project != os.environ['SiliconFamily']:
+            plog('error', 'You are about to flash an %s bios on a system used for %s silicon' % (vars.project, os.environ['SiliconFamily']))
+            if '2.7' in vars.ver:
+                decision = str.lower(raw_input ('Do you wish to continue: [y]/n: '))
+            else:
+                decision = str.lower(input ('Do you with to continue: [y]/n: '))
+
+        if decision == 'yes' or decision == 'y':
+        
+            plog('info','Checking if BIOS is valid before flashing')
+            if os.path.isfile(flashBIOS) == True:
+                #Flash BIOS section
+                try:
+                    plog('info','flash command: ' + flasher + ' -b ' + flashBIOS)
+                    os.system(flasher + ' -b ' + flashBIOS)
+                    secFooter('BIOS flash')
+                except:
+                    plog('error', 'Error with flashing BIOS')
+                    vars.ulockCheck = False
+            else:
+                plog('error', 'Invalid BIOS')
+                vars.ulockCheck = False
+        else:
+            plog('warn','User chose not to continue flashing')
+            vars.ulockCheck = False
+
+def copyWithProgres(src_file, dst_file):
+    file_size = os.path.getsize(src_file)
+    chunk_size = 1024 * 1024  # 1 MB
+    with open(src_file, 'rb') as src, open(dst_file, 'wb') as dst:
+        bytes_copied = 0
+        while True:
+            buf = src.read(chunk_size)
+            if not buf:
+                break
+            dst.write(buf)
+            bytes_copied += len(buf)
+            progress = (bytes_copied / file_size) * 100
+            if '2.7' in vars.ver:
+                sys.stdout.write("\rProgress: %.2f%%" % progress)
+                sys.stdout.flush()
+            else:
+                print("\rProgress: {:.2f}%".format(progress), end="", flush=True)
+    print("\rProgress: 100.00%")
+    return dst_file
+
+
+def copyPatchBios(fullPth):
+    
+    #Read ini file to get ucod directory
+    an_paths = config['AN_PATHS']
+    ucode_dir = an_paths['ucode_dir']
+    an_bios_out = config['AN_KNOBSTITCH_PATH']
+    bios_out_dir = an_bios_out['biosOutdir']
+    
+   
+    #Check if path exists 
+    fullpatchname_noext = vars.fullpatchname.split('.')[0]
+    if os.path.exists('%s\\%s\\%s\\%s\\%s' % (ucode_dir, vars.project, vars.cpustep, vars.mode, fullpatchname_noext)) == False:
+        os.makedirs('%s\\%s\\%s\\%s\\%s' % (ucode_dir, vars.project, vars.cpustep, vars.mode, fullpatchname_noext))
+    else:
+        plog('warn', 'Ucode Patch path exists: \n%s\\%s\\%s\\%s\\%s\nNo need to create directory' % (ucode_dir, vars.project, vars.cpustep, vars.mode, fullpatchname_noext))
+        
+    ucodePath = '%s\\%s\\%s\\%s\\%s' % (ucode_dir, vars.project, vars.cpustep, vars.mode, fullpatchname_noext)
+    ucodeName = '%s\\%s' % (ucodePath, vars.fullpatchname)
+
+    biosOut = '%s\\%s\\%s\\%s\\%s\\%s' % (bios_out_dir, vars.project, vars.cpustep, vars.mode, fullpatchname_noext, os.path.split(fullPth)[1])
+    biosOutPath = '%s\\%s\\%s\\%s\\%s' % (bios_out_dir, vars.project, vars.cpustep, vars.mode, fullpatchname_noext)
+
+    if os.path.exists(biosOutPath) == False:
+        os.makedirs(biosOutPath)
+    else:
+        plog('warn', 'BIOS path exists: \n%s\nNo need to create directory' % (biosOutPath))
+     
+    
+    #Copy ucode and binary to share drive
+    from shutil import copyfile
+    try:
+        if os.path.exists(ucodeName) == False:
+            secHeader('Copying Patch File to Share Drive')
+            copyfile(args.ucode, ucodeName)
+            plog('info','Patch file: %s' % ucodeName)
+            secFooter('Copying Patch File to Share Drive')
+        else:
+            plog('warn','Patch file exists: %s\nNo need to copy patch file to share drive' % ucodeName)
+    except:
+        plog('error', 'Error in copying patch file to dir')
+    try:
+        if os.path.exists(biosOut) == False:
+            secHeader('Copying binary to Share Drive')
+            copyWithProgres(fullPth, biosOut)
+            secFooter('Copying binary')
+
+        else:
+            plog('warn','Binary File path exists: %s\nNo need to copy binary' % biosOut)
+    except:
+        plog('error', 'Error in copying bin files to dir')
+        
+       
+    return(biosOut)
+        
+    
+def plog(level, message):
+    #Ued for logging and changing color of output to screen
+    if level == 'warn':
+        print ('\033[1;33;40m')
+        logger.info('%s' % message)
+    elif level == 'error':
+        print ('\033[1;31;40m')
+        logger.error('%s' % message)
+    elif level == 'notify':
+        print ('\033[1;36;40m')
+        logger.info('%s' % message)
+    elif level == 'success':
+        print ('\033[1;32;40m')
+        logger.info('%s' % message)
+    elif level == 'info': 
+        logger.info('%s' % message)
+    #reset color after logging and output of message
+    print('\033[1;37;40m')
+ 
+def secHeader(section):
+    #printing and logging header of each section
+    logger.info('####################################')
+    logger.info('##### %s has started #####' % section)
+    logger.info('####################################')
+    
+    
+def secFooter(section):
+    #print and log ending of each section
+    plog('success','=== %s was successful ===\n' % section)
+
+ 
+def knobStitch(newPath):
+    
+    an_knobstitch_path = config['AN_KNOBSTITCH_PATH']
+    biosOutdir = an_knobstitch_path['biosOutdir']
+    SwConfig_Path = an_knobstitch_path['SwConfig_Path']
+    ifwistitcher_path = an_knobstitch_path['ifwistitcher_path']
+    stitcher_path = an_knobstitch_path['stitcher_path']
+    swconfigs = an_knobstitch_path['swconfigs']
+    allplatforms = config['PLATFORMS']
+    platform = allplatforms[vars.project]
+    import subprocess
+   
+    try:
+        #find latest version of ifwistitcher. Changed ifwistitcher_path to stitcher_path
+        
+        # if '2.7' in vars.ver:
+            # stitcher = '%s\\ifwistitcher.py' % stitcher_path
+        # else:
+            # stitcher = '%s\\ifwistitcher.py' % max(glob.glob(os.path.join(ifwistitcher_path, '*/')), key=os.path.getmtime)
+        
+        stitcher = '%s\\ifwistitcher.py' % stitcher_path.replace('/','\\')
+    except:
+        plog('error', 'Trouble locating latest ifwistitcher')
+        
+
+    try:
+        # if args.swconfigs == None:
+            # #find lastest swconfig
+            
+            # latest_swconfigs = max(glob.glob(os.path.join(SwConfig_Path, '*/')), key=os.path.getmtime)
+            # swconfig = '%s\\%s\\Cafe\\%s\\%s' % (latest_swconfigs, vars.project, platform, vars.step)
+        # else:
+         swconfigs = args.swconfigs.replace('/','\\')
+
+    except:
+        plog('error', 'Trouble locating latest SwConfigs')
+
+    fullPth = None
+    if os.path.exists(swconfigs) == True:
+        
+        #build command to run ifwistitcher
+        BIOSpath = os.path.split(newPath)[0].replace('/','\\')
+       
+        fle = os.listdir(BIOSpath)
+        
+        if args.task == None and args.task == '':
+            task = os.environ['SWConfig']
+      
+        elif '.ini' in os.path.split(swconfigs)[1]:
+            task = os.path.split(args.swconfigs)[1].split('_')[0]
+        
+        else:
+                task = args.task
+                
+        #Check if Binary exists per software config
+        for x in fle:
+            if task in x:
+                fullPth = (BIOSpath +'\\'+ x)
+        #if binary does not exist then run stitcher
+        newPath = newPath.replace('/','\\')
+        if fullPth == None:
+            try:
+                      
+                secHeader('IfwiStitcher')
+                plog('info','python %s -op KnobChange -m Offline -b %s -ki %s -o %s\n' % (stitcher, newPath, swconfigs, BIOSpath))
+
+                subprocess.call('python %s -op KnobChange -m Offline -b %s -ki %s -o %s' % (stitcher, newPath, swconfigs, BIOSpath))
+                
+            except:
+                plog('error','Knob stitching failed')
+                
+        else:
+            plog('warn','Binaries already exist for this Patch: %s\nIfwistitcher will be skipped' % fullPth)
+            vars.KnobStitchIsSkipped = True
+        
+    else:
+        plog('error','Invalid path to swconfig')
+        
+    return(BIOSpath)
+ 
+
+def PostCode():
+    #Function created to use TTK API instead of scratchpad from BIOS
+    cfg = ConfigManager()
+    pltObj = cfg.LoadXml(r"C:\SVSHARE\User_Apps\TTK2\Xml Configurations\MiniPort80_smbus.xml")
+
+    try:
+        p80Interface = Port_80()
+        if p80Interface:
+            p80Interface.OpenPort80Interface(pltObj)
+            p= p80Interface.Read()
+            pcode = p[0].Result[0]
+            return(hex(pcode))
+    except:
+        plog('warn','Could Not Read Post Code')
+
+ 
+
+def unlock():
+    
+    plog('info','Getting Ready to Unlock Automation')
+    xwrapper_post_code = hex(0xf6)
+    satellite_post_code = hex(0xf5)
+    stuck = hex(0x0)
+    counter = 0
+    #Path to unlocker exe    
+    unlocker = config['AN_UNLOCK_PATH']
+    #Loops to check for final post code for Xwrapper or Satellite. 
+    #Errors out if post code reaches times specified in ini file
+    while counter <= 20:
+        time.sleep(int(unlocker['sleep']))
+
+        post_code = PostCode()
+
+        plog('notify','Post Code: %s' % post_code)
+        if post_code == stuck and counter >= int(unlocker['times_at_postcode']):
+            plog('error','Platform is stuck at Post Code: %s' % post_code)
+            plog('warn','Unlocker will be skipped')
+            break
+            return('Unlocker Failed')
+        else:    
+            if post_code != stuck:
+                counter = 0
+                stuck = post_code
+            if post_code == xwrapper_post_code or post_code == satellite_post_code:
+                plog('success','Post Code %s reached\n' % post_code)
+                
+                secHeader('Unlocker')
+                plog('info','Calling Unlocker\n%s\n' % unlocker['unlocker'])
+                subprocess.check_call(unlocker['unlocker'])
+                secFooter('Unlocker Automation')
+                break
+            
+            else:
+                counter += 1
+    
+def create_log_file():
+    #Creates log file for logging script activity
+    import logging
+    an_paths = config['AN_PATHS']
+    if args.log == None:
+        an_paths = config['AN_PATHS']
+        log_file = '%s' % an_paths['log_file']
+    else:
+        log_file = args.log
+
+    log_path = log_file.split(os.path.basename(log_file))[0]
+    global logger
+    #check if log file exists. if not create it
+    if not os.path.exists(log_path):
+        os.makedirs(log_path)
+    if os.path.isfile(log_file):
+        #check if log file is over a day old
+        one_day_ago = datetime.now() - timedelta(days=1)
+        filetime = datetime.fromtimestamp(path.getctime(log_file))
+
+        if filetime < one_day_ago:
+            # print "File is more than one day old"
+            now = datetime.now()
+            os.rename(log_file, '%s\\%s_%s' % (log_file.split(os.path.basename(log_file))[0], 
+            now.strftime('%Y_%m_%d_%H_%M_%S'),os.path.basename(log_file)))
+            open(log_file,'w')
+        else:
+            print('Using current log file: %s' % log_file)
+        
+    
+    else:
+        open(log_file,'w')
+    
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+      
+    fh = logging.FileHandler(log_file)
+    fh.setLevel(logging.INFO)
+    global formatter 
+    #Fomats the each line logged
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+    fh.setFormatter(formatter)
+    logger.addHandler(fh)
+    logger.addHandler(logging.StreamHandler())
+
+        
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(description = 
+    '''
+    Usage:
+    This script will update the BIOS with the Patch provided in the command line.
+    ''')
+    parser.add_argument('-b', '--bios',help = '''BIOS path needs to be a full valid path to binary.''',
+                                                default = None, type = str)
+    parser.add_argument('-u', '--ucode',help = '''Ucode path needs to be a full valid path to pdb file''',
+                                                default = None, type = str)
+    parser.add_argument('-sc', '--swconfigs',help = '''SwConfig needs to have full path to use user specified knobs.
+                                                    This must be used with -c or --copy option.''',
+                                                default = None, type = str)
+    parser.add_argument('-f', '--flash',help = '''Argument is used to trigger BIOS flash
+                                                    If not used flash feature will be skipped''',
+                                                action = 'store_true')
+    parser.add_argument('-t', '--task',help = '''The Task or software config is used for BIOS flashing.
+                                                    If left blank it will be read from SwConfig env var''',
+                                                default = None, type = str)
+    parser.add_argument('-c', '--copy',help = '''Argument is used to trigger the copy of both Binary and Patch to share drive''',
+                                                action = 'store_true')
+    parser.add_argument('-ul', '--unlock',help = '''This argument will unlock the system in automation.''',
+                                                action = 'store_true')
+    parser.add_argument('-l',  '--log',help = '''Log file created for script. User can specify log file full path to be used
+                                                if left blank the file from ini will be used''',
+                                                default = None, type = str)
+    parser.add_argument('-d', '--delpatch',help = '''delete all previous patches in BIOS.
+                                                if left blank it will update the CPUID from patch''',
+                                                action = 'store_true')                                            
+                                                
+    args = parser.parse_args()
+    
+    create_log_file()
+    #logs beginning of run
+    plog('notify','\n\n*****Patch Regression Has Started*****\n')
+
+   
+    an_paths = config['AN_PATHS']
+    vars.cli_bios_path = an_paths['cli_bios_path']
+
+    allprojects = config['PROJECTS']
+
+    vars.ver = sys.version
+    if '2.7' in vars.ver:
+        vars.cli_bios_path = vars.cli_bios_path.replace('python37','python27')
+
+    if args.ucode != None and args.ucode != '':    
+        try:
+            vars.fullpatchname = os.path.split(args.ucode)[1]
+            vars.cpuid,vars.patch = re.search("([0-9a-f]{5})_([0-9a-f]{8})", vars.fullpatchname).group().split('_')[0],\
+            re.search("([0-9a-f]{5})_([0-9a-f]{8})", vars.fullpatchname).group().split('_')[1]
+            allproject = config['PROJECTS']
+            vars.project, vars.step = allprojects[vars.cpuid].split('_')[0], allprojects[vars.cpuid].split('_')[1]
+            vars.cpustep = '%s_%s' % (vars.cpuid, vars.step)
+        except:
+            plog('error', 'Patch name provided is invalid')
+        
+        if list(vars.patch)[0] != '0':
+            vars.mode = 'Debug'
+        else:
+            vars.mode = 'Baseline'
+
+    
+    
+    if args.bios != None and args.bios != '':
+        
+        if args.ucode != None and args.ucode != '':
+    
+            if os.path.isfile(args.bios) == True and os.path.isfile(args.ucode) == True:
+
+                #Remove old bios from out dir and then update BIOS
+                removeOldBios()
+                updatedBin = ucodeUpdate(args.bios, args.ucode)
+                    
+                if args.copy == True:   
+
+                    if vars.step != '':
+                        newPath = copyPatchBios(updatedBin)
+
+                        # if args.knobs == True:
+                        if args.swconfigs != None and args.swconfigs != '':
+                            vars.stitchedBiosPth = knobStitch(newPath)
+
+                        else:
+                            plog('notify', 'SwConfig is disabled or path is blank')
+                         
+                    else:
+                        plog('error','No CPUID found in patch provided')
+                
+                else:
+                    plog('notify','Copying file is disabled')
+                    if args.swconfigs != None and args.swconfigs != '':
+                        plog('warn','Ignoring Knobstitch since copy option is disabled')
+                        
+
+            else:
+                plog('error','Invalid BIOS or Ucode path')
+        else:
+
+            plog('warn', 'No Ucode provided')
+        
+        if args.flash == True:  
+            if args.copy == False:
+                if args.task == None:
+                    vars.stitchedBiosPth = args.bios
+                    
+            else:
+                if args.ucode != None:
+                    # if args.swconfigs == None and args.swconfigs == '':
+                    
+                    vars.stitchedBiosPth = newPath
+                    plog('info','BIOS will be copied to share drive')
+                    plog('info','New path: ' + vars.stitchedBiosPth)
+
+
+            if args.task == None:
+                task = os.environ['SWConfig']
+            else:
+                task = args.task
+
+            flashingBios(vars.stitchedBiosPth, task)
+            
+            if args.unlock == True:
+                if vars.ulockCheck != False:
+                    unlock()
+                else:
+                    plog('warn','Flashing was unsuccessful, system will skip unlock')
+            else:
+                plog('notify','Unlocker disabled')
+        else:
+            plog('notify','Flashing disabled')
+            if args.unlock == True:
+                plog('warn','Unlocker will be skipped when flash is disabled')
+            elif args.task != None:
+                plog('warn','Task option will not be used if flash is disabled')
+    else:
+        plog('warn','No BIOS provided')
+    
+
